@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// in this schema we are setting some rules for username , email and password(details that we have to get from user on sign up)
 const userSchema = new mongoose.Schema({
     username:{
         type: String,
