@@ -1,9 +1,25 @@
+import { BrowserRouter , Route, Routes } from "react-router-dom";
+
+
+
+import Home from "./Pages/Home";
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
+import About from "./Pages/About";
+import Profile from "./Pages/Profile";
+
 function App(){
   return (
-    <>
-       <h1 className="bg-gray-500 border-2 border-b-blue-600">this is inovate real estate project</h1>
-       <div className="border-2 border-blue-900 h-40 w-40 m-4 p-16 text-red-500">div1</div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/sign-in" element={<SignIn />}/>
+        <Route path="/sign-up" element={<SignUp />}/>
+        <Route path="/about" element={<About />}/>
+        <Route path="/profile" element={<Profile />}/>
+      </Routes>
+    </BrowserRouter>
+    
   );
 }
 
