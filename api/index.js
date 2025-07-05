@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
@@ -10,9 +11,11 @@ mongoose.connect(process.env.MONGO).then(()=>{
     console.log("connected to database"); 
 }).catch(err=> console.log(err)
 )
-// this connect method is give us a promise 
 
 const app = express();
+// var cors = require('cors')
+app.use(cors())
+
 app.use(express.json());
 
 app.listen(3000,()=>{
