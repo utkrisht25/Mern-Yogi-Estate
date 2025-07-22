@@ -14,7 +14,7 @@ export const updateUser = async (req, res, next) => {
     }
     try {
         if(req.body.password){
-            req.body.password = await bcryptjs.hashSync(req.body.password, 10);
+            req.body.password = bcryptjs.hashSync(req.body.password, 10);
         }
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
@@ -30,7 +30,7 @@ export const updateUser = async (req, res, next) => {
         );
         // new: true will return the updated user
         // $set is see the fields that we want to update and the other fields will ignored and reain unchanged
-        const { password , ...rest} = updateUser._doc;
+        const { password , ...rest} = updatedUser._doc;
         // we are using _doc to get the document without the mongoose properties
         res.status(200).json(rest);
     } catch (error) {
