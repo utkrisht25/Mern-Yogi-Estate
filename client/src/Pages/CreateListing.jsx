@@ -3,7 +3,6 @@ import { getDownloadURL, ref, getStorage, uploadBytesResumable } from "firebase/
 import { app } from "../firebase";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { json } from "express";
 
 
 export default function CreateListing() {
