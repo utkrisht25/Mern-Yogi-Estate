@@ -6,12 +6,14 @@ import cookieParser from 'cookie-parser';
 
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
+import listingRouter from './routes/listing.route.js';
 dotenv.config();
 
 mongoose.connect(process.env.MONGO).then(()=>{
     console.log("connected to database"); 
 }).catch(err=> console.log(err)
 )
+
 
 const app = express();
 // var cors = require('cors')
@@ -26,6 +28,7 @@ app.listen(3000,()=>{
 
 app.use('/api/user', userRouter);
 app.use('/api/auth',  authRouter);
+app.use('/api/listing', listingRouter);
 
 
 //this is the middleware we are using to avoid the repetition of the try catch block every time on eveery route to check the error
