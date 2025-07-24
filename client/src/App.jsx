@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import About from "./Pages/About";
+import Search from "./Pages/Search";
 import Listing from "./Pages/Listing";
 import Profile from "./Pages/Profile";
 import Header from "./components/Header";
@@ -23,6 +24,7 @@ function App(){
         <Route path="/sign-in" element={<SignIn />}/>
         <Route path="/sign-up" element={<SignUp />}/>
         <Route path="/about" element={<About />}/>
+        <Route path="/search" element={<Search />}/>
         <Route path="/listing/:listingId" element={<Listing />} />
         <Route element ={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />}/>
