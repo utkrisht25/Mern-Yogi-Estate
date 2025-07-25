@@ -34,11 +34,13 @@ app.use('/api/user', userRouter);
 app.use('/api/auth',  authRouter);
 app.use('/api/listing', listingRouter);
 
-app.use(express.static(path.join(_dirname, '/client/dist')));
+// Serve static files from the client/dist directory
+app.use(express.static(path.join(_dirname, 'client', 'dist')));
 
-app.get('*', (req,res)=>{
-    res.sendFile(path.join(_dirname, 'client' , 'dist', 'index.html'));
-})
+// Handle client-side routing - serve index.html for all non-API routes
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(_dirname, 'client', 'dist', 'index.html'));
+});
 
 //this is the middleware we are using to avoid the repetition of the try catch block every time on eveery route to check the error
 app.use((err, req, res, next) =>{
