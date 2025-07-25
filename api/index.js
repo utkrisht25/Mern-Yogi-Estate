@@ -37,9 +37,18 @@ app.use('/api/listing', listingRouter);
 // Serve static files from the client/dist directory
 app.use(express.static(path.join(_dirname, 'client', 'dist')));
 
-// Handle client-side routing - serve index.html for all non-API routes
-app.get('/*', (req, res) => {
+// Handle client-side routing
+app.get('/', (req, res) => {
     res.sendFile(path.join(_dirname, 'client', 'dist', 'index.html'));
+});
+
+// Catch-all route for client-side routing
+app.use((req, res, next) => {
+    if (!req.path.startsWith('/api')) {
+        res.sendFile(path.join(_dirname, 'client', 'dist', 'index.html'));
+    } else {
+        next();
+    }
 });
 
 //this is the middleware we are using to avoid the repetition of the try catch block every time on eveery route to check the error
